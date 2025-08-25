@@ -29,7 +29,8 @@
       ]
     }
   ],
-  "buildCommand": "npx expo export -p web",
+  "buildCommand": "npm install --legacy-peer-deps && npx expo export -p web",
   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs"
 }
