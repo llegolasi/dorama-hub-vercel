@@ -4,7 +4,8 @@ export const getApiBaseUrl = (): string => {
     return process.env.EXPO_PUBLIC_RORK_API_BASE_URL;
   }
   if (typeof window !== 'undefined') {
-    return '';
+    // Use current window location for browser environment
+    return window.location.origin;
   }
   return 'http://localhost:3000';
 };

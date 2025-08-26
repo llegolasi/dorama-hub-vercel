@@ -27,10 +27,13 @@ export const trpcClient = trpc.createClient({
         }
       },
       fetch: async (url, options) => {
+        console.log('tRPC API Base URL:', getApiBaseUrl());
+        console.log('tRPC Full URL:', url);
         console.log('tRPC request:', url, options);
         try {
           const response = await fetch(url, options);
           console.log('tRPC response status:', response.status);
+          console.log('tRPC response headers:', Object.fromEntries(response.headers.entries()));
           
           if (!response.ok) {
             const text = await response.text();
