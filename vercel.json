@@ -1,9 +1,18 @@
 {
   "version": 2,
-  "rewrites": [
+  "functions": {
+    "backend/hono.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/hono.ts"
+      "src": "/api/(.*)",
+      "dest": "/backend/hono.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/backend/hono.ts"
     }
   ],
   "headers": [
@@ -15,8 +24,5 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
       ]
     }
-  ],
-  "buildCommand": "npm install --legacy-peer-deps && npx expo export -p web",
-  "outputDirectory": "dist",
-  "installCommand": "npm install --legacy-peer-deps"
+  ]
 }
